@@ -74,10 +74,10 @@ For local inspection or manual upload, run:
 
 ```sh
 pnpm install --frozen-lockfile
-SITE_ORIGIN=https://<storefront-origin> API_SITE_ORIGIN=https://<storefront-origin> VITE_STOREFRONT_ORIGIN=https://<storefront-origin> pnpm build:netlify
+SITE_ORIGIN=https://<storefront-origin> API_SITE_ORIGIN=https://<storefront-origin> VITE_STOREFRONT_ORIGIN=https://<storefront-origin> pnpm build:all
 ```
 
-The combined build requires the real origins above; `write-admin-proxy.mjs` deliberately fails rather than publishing an invalid placeholder proxy if `API_SITE_ORIGIN` is missing. Upload `dist/storefront/` only to the primary site, where its Netlify Functions and database are also configured. Upload `dist/admin/` to the second Netlify site, including `_redirects` and `robots.txt`. A manual HTML-folder upload by itself does **not** install Functions, initialize the database, or provide persistent ordering; connect the API site to this repository for full service. A neutral prebuilt preview with no owner domain intentionally has no working admin proxy and is not a production deployment. Rebuild both folders with actual origins before uploading them.
+`pnpm build:netlify` (used by the primary site) builds only the storefront; `pnpm build:all` also builds the admin folder. The combined build requires the real origins above; `write-admin-proxy.mjs` deliberately fails rather than publishing an invalid placeholder proxy if `API_SITE_ORIGIN` is missing. Upload `dist/storefront/` only to the primary site, where its Netlify Functions and database are also configured. Upload `dist/admin/` to the second Netlify site, including `_redirects` and `robots.txt`. A manual HTML-folder upload by itself does **not** install Functions, initialize the database, or provide persistent ordering; connect the API site to this repository for full service. A neutral prebuilt preview with no owner domain intentionally has no working admin proxy and is not a production deployment. Rebuild both folders with actual origins before uploading them.
 
 To rebuild only the admin static output after setting its origins:
 
