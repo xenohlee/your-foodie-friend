@@ -13,7 +13,7 @@ Start with [`README-NETLIFY.md`](README-NETLIFY.md) for deployment, environment 
 - `pnpm check` type-checks frontend and serverless API code.
 - `pnpm build:storefront` creates the storefront static output.
 - `pnpm build:admin` creates the separate admin static output.
-- `pnpm build:netlify` builds both sites and writes domain metadata/proxy rules; set the site-origin environment values documented in [`README-NETLIFY.md`](README-NETLIFY.md) first.
+- `pnpm build:netlify` builds the storefront site; `pnpm build:all` builds both sites and writes domain metadata/proxy rules; set the site-origin environment values documented in [`README-NETLIFY.md`](README-NETLIFY.md) first.
 - `pnpm exec netlify functions:build --src netlify/functions --functions .netlify/functions-build` bundles the API function.
 
 Never run `drizzle-kit push` against the Netlify database. The database migration SQL is under `netlify/database/migrations/`; follow the current Netlify Database workflow documented in the deployment guide.

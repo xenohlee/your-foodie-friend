@@ -16,7 +16,8 @@
     "build:static": "vite build",
     "build:storefront": "BUILD_TARGET=storefront vite build",
     "build:admin": "BUILD_TARGET=admin vite build",
-    "build:netlify": "pnpm build:storefront && node scripts/prerender-storefront.mjs && node scripts/write-site-meta.mjs && pnpm build:admin && node scripts/write-admin-proxy.mjs"
+    "build:netlify": "pnpm build:storefront && node scripts/prerender-storefront.mjs && node scripts/write-site-meta.mjs",
+    "build:all": "pnpm build:netlify && pnpm build:admin && node scripts/write-admin-proxy.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.693.0",
